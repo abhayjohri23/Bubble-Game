@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre&display=swap');
+:root {
+    --modal-color:rgba(0,0,0,0.25);
+    --font-color:white;
+    --background-color: rgb(42, 172, 199);
+}
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    color: var(--font-color);
 }
 
 html,body {
@@ -17,33 +23,35 @@ html,body {
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: rgb(42, 172, 199);
+    background-color:var(--background-color); 
 }
 
 #panel {
     width: 80%;
     height: 80%;
     border-radius: 10px;
-    background-color: white;
-    box-shadow: 0px 5px 5px 0px black;
+    background-color: rgba(0,0,0,0.4);
     overflow: hidden;
+    z-index: 2;
 }
 
 #topPart {
-    background-color: rgb(54, 206, 237);
+    background-color: var(--modal-color);
     width: 100%;
     height: 15%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    flex-wrap: nowrap;
 }
 
 #bottomPart {
-    background-image: linear-gradient(5deg,rgb(81, 197, 255),rgb(252, 252, 252));
+        background-color: var(--modal-color);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 85%;
 }
@@ -52,7 +60,7 @@ html,body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(45deg,rgb(91, 193, 248),#fff);
+    background-image: linear-gradient(45deg,rgba(91, 193, 248,0.15),#fff);
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -64,6 +72,7 @@ html,body {
 }
 
 .counter {
+    margin: 1rem;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -73,7 +82,7 @@ html,body {
 }
 .counter h2{
     font-size: 20px;
-    color: rgb(0, 114, 171);
+    color: var(--font-color);
 }
 
 .countVal {
@@ -86,4 +95,41 @@ html,body {
     border-radius: 30%;
     color: rgb(0, 114, 171);
     font-weight: 600;
+}
+
+.endOfGame {
+    color: var(--font-color);
+}
+
+#sideButtons {
+    width: 10%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+#sideButtons button {
+    color: rgb(27, 66, 74) !important;
+    border: 0.5px;
+    outline: none;
+    border-radius: 50%;
+}
+
+#Counters {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+#myVideo {
+    position:fixed;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
 }

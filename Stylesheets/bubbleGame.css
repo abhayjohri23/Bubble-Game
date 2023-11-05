@@ -15,6 +15,7 @@ html,body {
     width: 100%;
     height: 100%;
     font-family: 'Abhaya Libre',serif;
+    overflow: hidden;
 }
 
 #main {
@@ -23,16 +24,18 @@ html,body {
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color:var(--background-color); 
+    background-image:url('/Media/background.jpg'); 
 }
 
-#panel {
+#gamePanel {
+    position: absolute;
     width: 80%;
     height: 80%;
     border-radius: 10px;
     background-color: rgba(0,0,0,0.4);
     overflow: hidden;
     z-index: 2;
+    visibility: hidden;
 }
 
 #topPart {
@@ -47,7 +50,7 @@ html,body {
 }
 
 #bottomPart {
-        background-color: var(--modal-color);
+    background-color: var(--modal-color);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -111,7 +114,8 @@ html,body {
 }
 
 #sideButtons button {
-    color: rgb(27, 66, 74) !important;
+    background-color: rgb(62, 183, 253);
+    padding: 0.2rem;
     border: 0.5px;
     outline: none;
     border-radius: 50%;
@@ -132,4 +136,41 @@ html,body {
     left: 0;
     min-height: 100%;
     min-width: 100%;
+}
+
+.again {
+    background-color: rgb(62, 183, 253);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0.5rem 0.5rem;
+    border-radius: 1rem;
+    margin-top: 0.75rem;
+}
+
+.gameOptions {
+    position: relative;
+    top: -1rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#startPanel {
+    position: absolute;
+    width: 25%;
+    height: 60%;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.4);
+    overflow: hidden;
+    z-index: 2;
+    visibility: visible;
+}
+
+.logoImage {
+    width: 100%;
+    height: 50%;
+    transform: perspective(5rem) translateZ(-1rem);
 }

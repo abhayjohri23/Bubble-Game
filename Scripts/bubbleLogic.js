@@ -1,11 +1,12 @@
-let initTime = 120;
-let initScore = Number(document.querySelector('#scoreVal').innerHTML);
-let levelOfDiff = 10;
+let initTime = 120, levelOfDiff = 10, negatives = 0;
+let initScore = parseInt(document.querySelector('#scoreVal').innerHTML);
 let target = parseInt(document.querySelector('#target').innerHTML);
-let negatives = 0;
+let lastScore = parseInt(document.querySelector('#scoreVal').innerHTML);
+const immedParent = document.querySelector('#bottomPart');
 
 String.prototype.equals = function(text){
-    const myText = this.toString;
+    const myText = this;
+    console.log(myText);
     if(myText.length != text.length)            return false;
     for(let i=0;i<myText.length;++i){
         if(myText.charAt(i) != text.charAt(i))  return false;
@@ -32,11 +33,14 @@ function callTimer(){
             timerPlace.innerHTML = initTime;
         }
         else{
+            let currentScore = parseInt(document.querySelector('#scoreVal').innerHTML);
             document.querySelector('#bottomPart').innerHTML =`<div class="gameOptions">
             <h1 class="endOfGame">GAME OVER</h1>
+            <h2>You scored ${lastScore > currentScore ? "great" : "less"} this time!</h2>
             <button class="again" onclick="">Play Again</button>
             </div>`;
             clearInterval(timerID);
+            lastScore = currentScore;
         }
     },1000);
 }
@@ -48,16 +52,20 @@ function getNewTarget(){
 }
 
 function increaseScore(){
-    initScore += (10 - negatives);
+    initScore += 10;
     document.querySelector('#scoreVal').innerHTML = initScore;
-    console.log(`newScore: ${initScore}`);
+}
+
+function decreaseScore(){
+    initScore -= negatives;
+    document.querySelector('#scoreVal').innerHTML = initScore;
 }
 
 
 /*Event Bubbling used. Event triggered on pressing the bubble on the screen triggers the event listener of the parent 
 if the venet listener for the component is not available.
 */
-const immedParent = document.querySelector('#bottomPart');
+
 immedParent.addEventListener('click',function(event){
     if(event.target.className === 'bubble'){
         if(parseInt(event.target.textContent) === target){
@@ -65,10 +73,14 @@ immedParent.addEventListener('click',function(event){
             getNewTarget();
             makeBubbles();
         }
+        else{
+            decreaseScore();
+        }
     }
 });
 
 function startGame(levelOfDifficulty){
+    console.log(levelOfDifficulty.equals('Hard'))
     if(levelOfDifficulty.equals('Hard')){
         levelOfDiff = 20;
         initTime = 60;
@@ -82,10 +94,10 @@ function startGame(levelOfDifficulty){
         levelOfDiff = 10;
         initTime = 120;
     }                                    
-
+    document.querySelector('#timer').innerHTML = initTime;
     document.querySelector('#startPanel').style.visibility = 'hidden';
     document.querySelector('#gamePanel').style.visibility = 'visible';
-
+    document.querySelector('#topImage').style.visibility = 'visible';
     makeBubbles();
     callTimer();
 }

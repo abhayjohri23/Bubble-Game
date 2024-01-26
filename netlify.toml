@@ -1,6 +1,5 @@
 [build]
 publish="Markups"
-command="npm run build"
 
 [[rewrites]]
 from="/*"

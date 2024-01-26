@@ -1,0 +1,7 @@
+[build]
+publish="Markups"
+
+[[rewrites]]
+from="/*"
+to="/bubbleGame.html"
+

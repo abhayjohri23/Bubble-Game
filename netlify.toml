@@ -3,5 +3,5 @@ publish="Markups"
 
 [[rewrites]]
 from="/*"
-to="/bubbleGame.html"
+to="/Markups/bubbleGame.html"
 

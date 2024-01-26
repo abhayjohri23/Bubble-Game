@@ -1,7 +1,9 @@
 [build]
 publish="Markups"
+command=npm build
 
 [[rewrites]]
 from="/*"
-to="/Markups/bubbleGame.html"
+to="/bubbleGame.html"
+
 
